@@ -24,7 +24,7 @@ curl http://localhost
 docker container exec -it $CONTAINER_ID openresty -s reload
 
 # 6. try the link again to see the difference
-# expect to get 'hello customized Lua module' page
+# expect to get 'Hello customized Lua module' page
 curl http://localhost
 
 ```
