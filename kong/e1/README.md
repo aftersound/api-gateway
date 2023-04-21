@@ -11,7 +11,7 @@ docker run --name $CONTAINER_NAME -d -v $(pwd)/usr/local/kong/nginx.conf:/usr/lo
 CONTAINER_ID=$(docker ps -aqf "name=$CONTAINER_NAME" | head -n 1)
 
 # 3. try the link
-# expect to get default OpenResty welcome page
-curl http://localhost
+# expect to get '{"message":"no Route matched with those values"}'
+curl http://localhost:8000
 
 ```
