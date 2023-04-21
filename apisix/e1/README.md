@@ -6,7 +6,7 @@ Try **Apache APISIX Gateway in standalone mode** as described at [How to run API
 # 2. start Apache APISIX docker container
 CN='CN_'$RANDOM
 
-docker run --name $CN -d -p 9080:9080 -v $(pwd)/usr/local/openresty/nginx/conf:/usr/local/openresty/nginx/conf -v $(pwd)/usr/local/openresty/lualib:/usr/local/openresty/lualib -v $(pwd)/usr/local/apisix/apisix:/usr/local/apisix/apisix -v $(pwd)/usr/local/apisix/conf:/usr/local/apisix/conf -e "APISIX_STAND_ALONE=true" apache/apisix:latest
+docker run --name $CN -d -p 9080:9080 -v $(pwd)/usr/local/openresty/nginx/conf:/usr/local/openresty/nginx/conf -v $(pwd)/usr/local/apisix/conf:/usr/local/apisix/conf -e "APISIX_STAND_ALONE=true" apache/apisix:latest
 
 CID=$(docker ps -aqf "name=$CN" | head -n 1)
 
