@@ -1,4 +1,4 @@
-This is to try the **Serving Static Content** example in [nginx beginner guide](https://nginx.org/en/docs/beginners_guide.html) using docker
+Try **Serving Static Content** described in [nginx beginner guide](https://nginx.org/en/docs/beginners_guide.html) using docker
 
 ```
 # 1. cd directory 'e1'
