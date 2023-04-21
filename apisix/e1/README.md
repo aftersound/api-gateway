@@ -14,4 +14,13 @@ CID=$(docker ps -aqf "name=$CN" | head -n 1)
 # expect to get '{"error_msg":"404 Route Not Found"}'
 curl http://localhost:9080
 
+# 4. update apisix.yaml with content in e1.yaml in directory $(pwd)/usr/local/apisix/conf
+
+# 5. make apisix container to reload updated config
+docker exec -it $CID apisix reload
+
+# 6. try the link again to see the difference
+# expect to get 'Hello APISIX'
+curl http://localhost:9080
+
 ```
