@@ -1,0 +1,20 @@
+FROM openresty/openresty:1.21.4.1-7-alpine-fat
+
+# argument: common name for fallback SSL certificate
+ARG CN
+
+# install openssl
+RUN apk add --update openssl && \
+    rm -rf /var/cache/apk/* \
+
+# create fallback SSL certificate
+RUN openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -subj "/CN=$CN" -keyout /etc/ssl/resty-auto-ssl-fallback.key -out /etc/ssl/resty-auto-ssl-fallback.crt
+
+# install resty-auto-ssl
+RUN luarocks install lua-resty-auto-ssl
+
+# prepare folder for resty-auto-ssl
+RUN cd /etc && \
+    mkdir resty-auto-ssl && \
+    chown root resty-auto-ssl && \
+    chmod 777 resty-auto-ssl \
